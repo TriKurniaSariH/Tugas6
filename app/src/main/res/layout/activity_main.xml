@@ -54,4 +54,26 @@
         android:textColor="@color/white"
         android:backgroundTint="@color/darkPink"
         android:fontFamily="@font/poppins_medium"/>
+
+    <Button
+        android:id="@+id/btnCamera"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Open Camera"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/darkPink"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginTop="10dp" />
+
+    <Button
+        android:id="@+id/btnSendSms"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:text="Send SMS"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/darkPink"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginTop="10dp" />
+
+
 </LinearLayout>
