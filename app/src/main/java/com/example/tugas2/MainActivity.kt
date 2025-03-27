@@ -34,17 +34,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Tombol untuk mengirim SMS
-        binding.btnSendSms.setOnClickListener {
-            sendSms()
+        // Tombol untuk mengirim pesan
+        binding.btnShareMessage.setOnClickListener {
+            val intent = Intent(this, ShareMessageActivity::class.java)
+            startActivity(intent)
         }
-    }
 
-    private fun sendSms() {
-        val phoneNumber = "081312271151" //
-        val message = "Halo! Ini pesan dari aplikasi Nia 😊"
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms:$phoneNumber"))
-        intent.putExtra("sms_body", message)
-        startActivity(intent)
     }
 }
+
