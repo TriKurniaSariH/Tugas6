@@ -7,18 +7,23 @@
     android:gravity="center"
     android:background="@color/pastelPink">
 
+
+
     <EditText
         android:id="@+id/etMessage"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/enter_message"
         android:textSize="16sp"
         android:padding="12dp"
         android:background="@color/white"
         android:textColor="@color/black"
-        android:inputType="text"
-        android:autofillHints="text"
-        android:minHeight="48dp"/>
+        android:inputType="textMultiLine"
+        android:minLines="3"
+        android:maxLines="6"
+        android:gravity="top|start"
+        android:scrollbars="vertical"/>
+
 
     <Button
         android:id="@+id/btnShare"
@@ -29,4 +34,8 @@
         android:backgroundTint="@color/darkPink"
         android:fontFamily="@font/poppins_medium"
         android:layout_marginTop="20dp" />
+
+
+
+
 </LinearLayout>

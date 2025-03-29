@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.tugas2.databinding.ActivityMainBinding
 
@@ -28,17 +29,12 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Tombol untuk membuka kamera
-        binding.btnCamera.setOnClickListener {
-            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        val btnTugas = findViewById<Button>(R.id.btnTugas)
+        btnTugas.setOnClickListener {
+            val intent = Intent(this, TugasActivity::class.java)
             startActivity(intent)
         }
 
-        // Tombol untuk mengirim pesan
-        binding.btnShareMessage.setOnClickListener {
-            val intent = Intent(this, ShareMessageActivity::class.java)
-            startActivity(intent)
-        }
 
     }
 }
