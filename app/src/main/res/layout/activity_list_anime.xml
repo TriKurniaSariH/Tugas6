@@ -6,22 +6,35 @@
     android:padding="10dp"
     android:background="@color/pastelPink">
 
-    <!-- Judul di atas -->
+    <!-- Judul -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="KARAKTER ANIME ONE PIECE"
+        android:text="LIST ANIME NIA"
         android:textSize="20sp"
         android:textStyle="bold"
         android:gravity="center"
         android:padding="10dp"
         android:textColor="@color/white" />
 
-    <!-- RecyclerView untuk daftar karakter -->
+    <!-- RecyclerView Grid Vertikal -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/characterRV"
+        android:id="@+id/animeRV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:paddingTop="8dp"/>
+
+    <!-- RecyclerView Horizontal -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:clipToPadding="false"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp" />
+
 
 </LinearLayout>

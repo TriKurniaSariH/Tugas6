@@ -20,7 +20,7 @@ class TugasActivity : AppCompatActivity() {
 
         val txtTugas4 = findViewById<TextView>(R.id.txtTugas4)
         txtTugas4.setOnClickListener {
-            val intent = Intent(this, CharacterListActivity::class.java)
+            val intent = Intent(this, ListAnimeActivity::class.java)
             startActivity(intent)
         }
     }

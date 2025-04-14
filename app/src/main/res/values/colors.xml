@@ -4,4 +4,10 @@
     <color name="darkPink">#B22222</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="lavenderblush">#FFF0F5</color>
+    <color name="softblue">#E6EEFF</color>
+    <color name="lightyellow">#FFFDE7</color>
+    <color name="greentint">#F1F8E9</color>
+    <color name="peachtint">#FBE9E7</color>
+
 </resources>
