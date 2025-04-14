@@ -18,7 +18,7 @@ class HorizontalAdapter(private val animeList: ArrayList<ItemAnime>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HorizontalViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_horizontal_anime, parent, false) // ✅ ini yang penting!
+            .inflate(R.layout.item_horizontal_anime, parent, false)
         return HorizontalViewHolder(view)
     }
 
