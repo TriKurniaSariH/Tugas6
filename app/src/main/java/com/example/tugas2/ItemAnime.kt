@@ -8,14 +8,16 @@ data class ItemAnime(
     val judul: String,
     val nama: String,
     val genre: String,
-    val deskripsi: String
+    val deskripsi: String,
+    var isFavorite: Boolean = false
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
-        parcel.readString() ?: ""
+        parcel.readString() ?: "",
+        parcel.readByte() != 0.toByte()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -24,6 +26,7 @@ data class ItemAnime(
         parcel.writeString(nama)
         parcel.writeString(genre)
         parcel.writeString(deskripsi)
+        parcel.writeByte(if (isFavorite) 1 else 0)
     }
 
     override fun describeContents(): Int = 0

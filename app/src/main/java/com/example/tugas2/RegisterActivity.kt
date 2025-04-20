@@ -3,8 +3,6 @@ package com.example.tugas2
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.tugas2.LoginActivity
-import com.example.tugas2.MainActivity
 import com.example.tugas2.databinding.ActivityRegisterBinding
 
 class RegisterActivity : AppCompatActivity() {
@@ -16,16 +14,25 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Tombol "Next" → Simpan data & masuk ke HomeActivity
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = "" // Menghapus judul di Toolbar
+
+        // Aksi tombol "Next"
         binding.btnNext.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
-        // Tombol "Already have an account? Log In" → Pindah ke LoginActivity
+        // Aksi tombol "Log In"
         binding.txtLogin.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressedDispatcher.onBackPressed()
+        return true
     }
 }

@@ -1,9 +1,12 @@
 package com.example.tugas2
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 class AnimeDetailActivity : AppCompatActivity() {
 
@@ -11,6 +14,20 @@ class AnimeDetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_anime_detail)
 
+        setupToolbar()
+        showAnimeDetail()
+    }
+
+    private fun setupToolbar() {
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            title = ""
+        }
+    }
+
+    private fun showAnimeDetail() {
         val anime = intent.getParcelableExtra<ItemAnime>("anime")
 
         val imageView = findViewById<ImageView>(R.id.detailImage)
@@ -25,6 +42,26 @@ class AnimeDetailActivity : AppCompatActivity() {
             authorText.text = "Author: ${it.nama}"
             genreText.text = "Genre: ${it.genre}"
             deskripsiText.text = it.deskripsi
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return true
+    }
+
+    // Menangani klik menu
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+            R.id.logout -> {
+                finishAffinity()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

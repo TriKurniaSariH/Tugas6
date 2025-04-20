@@ -1,12 +1,22 @@
 package com.example.tugas2
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class ListAnimeActivity : AppCompatActivity() {
+
+    companion object {
+        val favoriteAnimeList = mutableListOf<ItemAnime>()
+    }
 
     private lateinit var animeRecyclerView: RecyclerView
     private lateinit var animeAdapter: MyAdapter
@@ -16,6 +26,11 @@ class ListAnimeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list_anime)
 
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.title = ""
+
         animeRecyclerView = findViewById(R.id.animeRV)
         listAnime = ArrayList()
 
@@ -24,7 +39,7 @@ class ListAnimeActivity : AppCompatActivity() {
                 R.drawable.one_piece,
                 "One Piece",
                 "Eiichiro Oda",
-                "Adventure, Fantasy, Action",
+                "Adventure, Action",
                 "Petualangan Monkey D. Luffy dan kru Topi Jerami dalam mencari harta karun legendaris One Piece. " +
                         "Mereka menjelajahi Grand Line dan menghadapi banyak musuh kuat yang menghalangi jalan mereka. " +
                         "Dengan kekuatan buah iblis dan persahabatan, mereka terus bertahan di tengah bahaya. " +
@@ -52,7 +67,7 @@ class ListAnimeActivity : AppCompatActivity() {
                 R.drawable.boruto,
                 "Boruto",
                 "Ukyo Kodachi",
-                "Action, Adventure, Ninja",
+                "Adventure, Ninja",
                 "Boruto adalah anak dari Hokage ketujuh, Naruto Uzumaki, yang hidup di era damai. " +
                         "Meski punya bakat hebat, ia merasa tertindas oleh bayang-bayang sang ayah. " +
                         "Bersama teman-temannya, ia menjelajahi dunia ninja dan menghadapi ancaman baru. " +
@@ -150,7 +165,7 @@ class ListAnimeActivity : AppCompatActivity() {
                 R.drawable.april,
                 "Your Lie in April",
                 "Naoshi Arakawa",
-                "Drama, Music, Romance",
+                "Drama, Romance",
                 "Kousei Arima kehilangan semangat bermain piano setelah ibunya meninggal. " +
                         "Dunianya berubah saat bertemu Kaori Miyazono, gadis ceria pemain biola. " +
                         "Kaori mengajaknya kembali ke panggung dan menikmati musik dari hati. " +
@@ -178,7 +193,7 @@ class ListAnimeActivity : AppCompatActivity() {
                 R.drawable.haikyuu,
                 "Haikyuu!!",
                 "Haruichi Furudate",
-                "Sports, Drama, School, Comedy",
+                "Sports, School",
                 "Hinata Shoyo, pemain voli bertubuh kecil tapi bersemangat besar. " +
                         "Ia bergabung dengan tim Karasuno dan bertemu saingan lamanya, Kageyama. " +
                         "Mereka berdua membentuk duo yang tangguh di lapangan. " +
@@ -206,7 +221,7 @@ class ListAnimeActivity : AppCompatActivity() {
                 R.drawable.naruto,
                 "Naruto Shippuden",
                 "Masashi Kishimoto",
-                "Action, Adventure, Ninja",
+                "Action, Ninja",
                 "Naruto Uzumaki kembali lebih dewasa untuk menyelamatkan teman-temannya. " +
                         "Ia terus mengejar cita-cita menjadi Hokage, pemimpin desa Konoha. " +
                         "Banyak pertarungan epik, peristiwa emosional, dan pengungkapan rahasia besar. " +
@@ -244,14 +259,71 @@ class ListAnimeActivity : AppCompatActivity() {
         )
 
 
-        // Setup RecyclerView Grid Vertikal
-        animeRecyclerView.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
+
+        animeRecyclerView.layoutManager =
+            StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         animeAdapter = MyAdapter(listAnime)
         animeRecyclerView.adapter = animeAdapter
 
         // Setup RecyclerView Horizontal
         val recyclerHorizontal = findViewById<RecyclerView>(R.id.recyclerViewHorizontal)
-        recyclerHorizontal.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerHorizontal.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerHorizontal.adapter = HorizontalAdapter(listAnime)
+
+        // Bottom Navigation
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigation)
+        bottomNavigationView.selectedItemId = R.id.nav_list
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.nav_home -> {
+                    startActivity(Intent(this, MainActivity::class.java))
+                    true
+                }
+
+                R.id.nav_list -> true
+
+                R.id.nav_profile -> {
+                    startActivity(Intent(this, ProfileActivity::class.java))
+                    true
+                }
+
+                else -> false
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.anime_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                true
+            }
+
+            R.id.action_search -> {
+                // Open search activity or show a search dialog
+                Toast.makeText(this, "Search ditekan", Toast.LENGTH_SHORT).show()
+                true
+            }
+
+            R.id.action_favorite -> {
+                val intent = Intent(this, FavoriteActivity::class.java)
+                intent.putParcelableArrayListExtra("favoriteList", ArrayList(favoriteAnimeList))
+                startActivity(intent)
+                true
+            }
+
+            R.id.action_logout -> {
+                finishAffinity()
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }
