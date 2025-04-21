@@ -40,9 +40,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, RegisterActivity::class.java))
         }
 
-        binding.btnTugas.setOnClickListener {
-            startActivity(Intent(this, TugasActivity::class.java))
-        }
     }
 
     private fun setupBottomNavigation() {

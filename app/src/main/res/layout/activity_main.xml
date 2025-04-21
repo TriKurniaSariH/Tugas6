@@ -83,16 +83,6 @@
                 android:layout_marginStart="10dp" />
         </LinearLayout>
 
-        <!-- Tombol Tugas -->
-        <Button
-            android:id="@+id/btnTugas"
-            android:layout_width="180dp"
-            android:layout_height="50dp"
-            android:text="Tugas"
-            android:textColor="@color/white"
-            android:backgroundTint="@color/darkPink"
-            android:fontFamily="@font/poppins_medium"
-            android:layout_marginTop="10dp" />
     </LinearLayout>
 
     <!-- Bottom Navigation -->
