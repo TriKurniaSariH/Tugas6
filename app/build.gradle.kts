@@ -1,7 +1,6 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-
 }
 
 android {
@@ -28,7 +27,6 @@ android {
         }
     }
 
-    // ✅ Aktifkan ViewBinding
     buildFeatures {
         viewBinding = true
     }
@@ -53,14 +51,16 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+    // Tambahan manual
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("com.google.android.material:material:1.11.0")
 
-        implementation ("androidx.recyclerview:recyclerview:1.3.2")
-        implementation ("com.google.android.material:material:1.11.0")
+    // Firebase Authentication
+    implementation("com.google.firebase:firebase-auth:22.3.0")
 
-
-
-
-
-
+    // Firebase Core (opsional tapi umum)
+    implementation("com.google.firebase:firebase-analytics:21.6.1")
 }
 
+// Tambahkan ini di bagian paling bawah!
+apply(plugin = "com.google.gms.google-services")

@@ -26,6 +26,7 @@ class EditProfileActivity : AppCompatActivity() {
         etEditInstagram = findViewById(R.id.etEditInstagram)
         etEditEmail = findViewById(R.id.etEditEmail)
         etEditPassword = findViewById(R.id.etEditPassword)
+
         btnSaveChanges = findViewById(R.id.btnSaveChanges)
         btnBack = findViewById(R.id.btnBack)
 

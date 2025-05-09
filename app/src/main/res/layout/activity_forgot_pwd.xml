@@ -57,7 +57,7 @@
             android:textAlignment="center" />
 
         <EditText
-            android:id="@+id/etEmailOrPhone"
+            android:id="@+id/edtEmailOrPhone"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:hint="Email or Phone"
